@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class Drive : MonoBehaviour
 {
+    // float steerSpeed = -250;
+    float moveSpeed = 5f;
     void Start()
     {
     }
 
     void Update()
     {
-        transform.Translate(0, -0.01f, 0);
-        // transform.Rotate(0, 0, 0.1f);
-        
+        float steerAmount = Input.GetAxis("Horizontal") * steerSpeed * Time.deltaTime;
+        float moveAmount = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+        transform.Rotate(0, 0, steerAmount);
+        transform.Translate(0, moveAmount, 0);
     }
 }
